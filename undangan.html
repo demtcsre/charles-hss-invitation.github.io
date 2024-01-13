@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charles's HSS Invitation</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+ 
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        button{
+            font-size: 2em;
+            height: 50px;
+            width: 50px;
+            border-radius: 100%;
+            background-color: white;
+            position: sticky;
+            top: 0;
+        }
+
+        div.container {
+            min-width: 300px;
+            max-width: 500px;
+            margin: 0px auto;
+        }
+
+        section.page {
+            width: 100%;
+            min-height: 100vh;
+            background-color: rgb(82, 181, 181);
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        p, h1, h2{
+            text-align: center;
+            color: black;
+        }
+
+        h1{
+            font-size: 2em;
+        }
+
+        h2{
+            font-size: 1.5em;
+        }
+
+        section.page.one, section.page.two, section.page.three{
+            gap: 100pt;
+        }
+
+        section.page.one{
+            justify-content: space-evenly;
+            padding: 5em 0;
+        }
+
+        section.page.two {
+            padding: 20px;
+        }
+                
+        @media screen and (max-width: 600px) {
+            button{
+                height: 20px;
+                width: 20px;
+                font-size: 0.75em;
+            }
+
+            h1{
+                font-size: 1.5em;
+            }
+
+            h2{
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <button class="theme-btn">☀️</button>
+        <section class="page one" id="home"> 
+            <div class="title">
+                <h2>You're Invited to</h2>
+                <h1>Charles's Sweet Seventeen</h1>
+            </div>
+
+            <div class="timer">
+                <h1>Countdown:</h1>
+                <h2 class="countdown"></h2>
+            </div>
+
+            <div class="rules">
+                <p>Dresscode: Casual Formal</p>
+                <p>Wednesday, 30th October 2024</p>
+                <p>Harper Hotel Grand Ballroom, 7 PM</p>
+            </div>
+        </section>
+        
+        <section class="page two">
+            <h1>Activities</h1>
+            <h2>Fun Games</h2>
+            <h2>Dinner</h2>
+            <h2>Karaoke</h2>
+            <h2>Doorprize</h2>
+        </section>
+        
+        <section class="page three" style="margin-bottom: 0;">
+            <h1>See you there!</h1>
+        </section>
+    </div>
+    <script>
+        // Set the date we're counting down to
+        var countDownDate = new Date("Oct 30, 2024 19:00:00").getTime();
+
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+
+        // Get today's date and time
+            var now = new Date().getTime();
+
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.querySelector(".countdown").innerHTML = days + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.querySelector(".countdown").innerHTML = "EXPIRED";
+            }
+        }, 1000);
+
+        const container = document.body;
+        const modebtn = document.querySelector(".theme-btn");
+
+        modebtn.addEventListener("click", () => {
+            container.classList.toggle("dark-mode");
+            if(container.className == "dark-mode"){
+                container.style.backgroundColor = "#191d2b";
+                modebtn.innerHTML = "🌙";
+                document.querySelectorAll("p").style.fontColor = "white"
+                document.querySelectorAll("div").style.backgroundColor = "black"
+            }
+            else{
+                container.style.backgroundColor = "white";
+                modebtn.innerHTML = "☀️";
+            };
+        });
+    </script>
+</body>
+</html>
